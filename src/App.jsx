@@ -6,7 +6,8 @@ function App() {
   const [newTodoName, setnewTodoName] = useState("");
   const [Todos, setTodos] = useState([]);
 
-  function addnewTodo() {
+  function addnewTodo(e) {
+    e.preventDefault()
     if (newTodoName === "") return null;
     setTodos((currentTodos) => {
       return [
@@ -36,7 +37,7 @@ function App() {
 
   return (
     <>
-      <div id="new-todo-form">
+      <form onSubmit={addnewTodo} id="new-todo-form">
         <label htmlFor="todo-input"> Todo Manager</label>
         <input
           type="text"
@@ -59,7 +60,7 @@ function App() {
             );
           })}
         </ul>
-      </div>
+      </form>
     </>
   );
 }
